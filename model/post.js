@@ -8,7 +8,8 @@ const postsSchema = new mongoose.Schema({
   tags: [
     {
       type: String,
-      required: [true, 'Please fill the Tags of post']
+      // required: [true, 'Please fill the Tags of post'],
+      validate: [value => value.length > 0, 'Tag is reuired'] // Array.isArray(value) && 
     }
   ],
   type: {
@@ -36,8 +37,12 @@ const postsSchema = new mongoose.Schema({
   comments:{
     type: Number,
     default: 0
-  },
-});
+  }
+},
+  {
+    versionKey: false
+  }
+);
 
 const Post = mongoose.model('Post',postsSchema);
 
