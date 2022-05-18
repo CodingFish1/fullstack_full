@@ -22,13 +22,11 @@ const posts = {
                     comments: body.comments
                 })
                 successHandler(res, newPost);
-                res.end()
             } else {
                 errorHandler(res)
             }
         } catch (error) {
             errorHandler(res,error);
-                res.end()
             }
     },
     async delAllPost(req, res) {
@@ -67,7 +65,7 @@ const posts = {
                 if (updateResult === null) {
                     errorHandler(res, "No such ID, please check again") 
                 }
-                res.end()          
+            successHandler(res, updateResult)        
             }
         }catch(error){
             errorHandler(res, error)

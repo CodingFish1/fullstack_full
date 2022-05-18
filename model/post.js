@@ -5,13 +5,17 @@ const postsSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Please input your name']
   },
-  tags: [
-    {
-      type: String,
-      // required: [true, 'Please fill the Tags of post'],
-      validate: [value => value.length > 0, 'Tag is reuired'] // Array.isArray(value) && 
+  tags: {
+    type: [String],
+    validate: {
+      validator: (value) => {
+        if (Array.isArray(value) && value.length === 0) return false
+        else if (value.some(text => text === '')) return false
+        else return true
+      },
+      message: `Tag format error`
     }
-  ],
+  },
   type: {
     type: String,
     enum:["group","person"],
