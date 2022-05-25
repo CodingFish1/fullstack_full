@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
 
 const postsSchema = new mongoose.Schema({
-  name: {
-    type: String,
+  user: {
+    type: mongoose.Schema.ObjectId,
+    ref:"user", //Associated collection(table)'s name
     required: [true, 'Please input your name']
   },
   tags: {
@@ -25,7 +26,7 @@ const postsSchema = new mongoose.Schema({
     type: String,
     default: ""
   },
-  createAt: {
+  createdAt: {
     type: Date,
     default: Date.now,
     select: false

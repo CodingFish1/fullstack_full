@@ -41,7 +41,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"name\": \"0000\",\r\n  \"tags\": \"tags\",\r\n  \"type\": \"group\",\r\n  \"image\": \"image\",\r\n  \"content\": \"content\",\r\n  \"likes\": 2,\r\n  \"comments\": 2\r\n}",
+					"raw": "{\r\n  \"user\":\"6288bebbc139f0b7b807a0f3\",\r\n  \"name\": \"YUYU00\",\r\n  \"tags\": \"tags\",\r\n  \"type\": \"group\",\r\n  \"image\": \"image\",\r\n  \"content\": \"content1111\",\r\n  \"likes\": 2,\r\n  \"comments\": 2\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -49,15 +49,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:3005/posts",
-					"protocol": "http",
+					"raw": "https://floating-waters-11976.herokuapp.com/posts",
+					"protocol": "https",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"floating-waters-11976",
+						"herokuapp",
+						"com"
 					],
-					"port": "3005",
 					"path": [
 						"posts"
 					]
@@ -71,15 +69,13 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://127.0.0.1:3005/posts/627dcf33d66ee71cce467b3e",
-					"protocol": "http",
+					"raw": "https://floating-waters-11976.herokuapp.com/posts/627dcf33d66ee71cce467b3e",
+					"protocol": "https",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"floating-waters-11976",
+						"herokuapp",
+						"com"
 					],
-					"port": "3005",
 					"path": [
 						"posts",
 						"627dcf33d66ee71cce467b3e"
@@ -94,15 +90,13 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://127.0.0.1:3005/posts/",
-					"protocol": "http",
+					"raw": "https://floating-waters-11976.herokuapp.com/posts/",
+					"protocol": "https",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"floating-waters-11976",
+						"herokuapp",
+						"com"
 					],
-					"port": "3005",
 					"path": [
 						"posts",
 						""
@@ -121,17 +115,14 @@
 					"raw": "{\r\n  \"name\": \"dddddd\",\r\n  \"tags\": \"tags\",\r\n  \"type\": \"group\",\r\n  \"image\": \"image\",\r\n  \"content\": \"content\",\r\n  \"likes\": 2,\r\n  \"comments\": 2\r\n}"
 				},
 				"url": {
-					"raw": "http://127.0.0.1:3005/posts/627dd0fe8101b2bf24ac602d",
-					"protocol": "http",
+					"raw": "https://floating-waters-11976.herokuapp.com/627dd0fe8101b2bf24ac602d",
+					"protocol": "https",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"floating-waters-11976",
+						"herokuapp",
+						"com"
 					],
-					"port": "3005",
 					"path": [
-						"posts",
 						"627dd0fe8101b2bf24ac602d"
 					]
 				}

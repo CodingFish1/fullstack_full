@@ -1,34 +1,24 @@
 const successHandler = require('../service/successHandler')
 const errorHandler =require('../service/errorHandler')
-const Post = require('../model/postModel')
-// const User = require("../model/userModel")
+const User = require("../model/userModel")
 
 const opts = { runValidators: true }
-const posts = {
-    async getPosts(req, res) {
-        const timeSort = req.query.timeSort == "asc" ? "createdAt":"-createdAt"
-        const q = req.query.keyword !== undefined ? {content: new RegExp(req.query.keyword)} : {};
-        console.log(q)
-        const allPosts = await Post.find(q).populate({
-            path: 'user', // refer to Schema item
-            select: 'name avatar'
-        }).sort(timeSort)
-        successHandler(res, allPosts);
+const users = {
+    async getAllUsers(req, res) {
+        const allUsers = await User.find();
+        successHandler(res, allUsers);
     },
-    async createdPosts(req, res) {
+    async createdUser(req, res) {
         try {
             const { body } = req
             if(body.content) {
-                const newPost = await Post.create({
-                    user: body.user,
-                    tags: body.tags,
-                    type: body.type,
-                    image: body.image,
-                    content: body.content,
-                    likes: body.likes,
-                    comments: body.comments
+                const newUser = await User.create({
+                    name: body.name,
+                    email: body.email,
+                    avatar: body.avatar,
+                    gender: body.gender,
                 })
-                successHandler(res, newPost);
+                successHandler(res, newUser);
             } else {
                 errorHandler(res)
             }
@@ -36,13 +26,8 @@ const posts = {
             errorHandler(res,error);
             }
     },
-    async delAllPost(req, res) {
-        const delPosts = await Post.deleteMany({})
-        successHandler(res);
-    },
-    async delSiglePost(req, res) {
+    async delSigleUser(req, res) {
         const id = req.params.id;
-        console.log(id)
         try {
             const deleteResult = await Post.findByIdAndDelete(id);
                 if(deleteResult) {
@@ -54,14 +39,13 @@ const posts = {
                 errorHandler(res, error)
             }
     },
-    async editPost(req, res) {
+    async editUser(req, res) {
         const data = req.body;
         const id = req.params.id;
         try {
             if (
                 Object.keys(data).length === 0 ||
-                (data.hasOwnProperty('content') && data.content === '') ||
-                data.tags.length === 0
+                data.name === '' || data.email === ''
             ) {
                 errorHandler(res)
             } else {
@@ -80,4 +64,4 @@ const posts = {
     }
 }
 
-module.exports = posts
+module.exports = users
