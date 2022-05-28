@@ -70,7 +70,8 @@ const posts = {
                     opts
                     )
                 if (updateResult === null) {
-                    errorHandler(res, "No such ID, please check again") 
+                    errorHandler(res, "No such ID, please check again")
+                    return
                 }
             successHandler(res, updateResult)        
             }
