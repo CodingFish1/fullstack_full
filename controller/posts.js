@@ -3,7 +3,7 @@ const errorHandler =require('../service/errorHandler')
 const Post = require('../model/postModel')
 // const User = require("../model/userModel")
 
-const opts = { runValidators: true }
+const opts = { runValidators: true, new: true }
 const posts = {
     async getPosts(req, res) {
         const timeSort = req.query.timeSort == "asc" ? "createdAt":"-createdAt"
