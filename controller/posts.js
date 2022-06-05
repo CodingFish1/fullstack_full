@@ -65,7 +65,7 @@ const posts = {
                 (data.hasOwnProperty('content') && data.content === '') ||
                 data.tags.length === 0
             ) {
-                errorHandler(res)
+                return next(appError(400,"No such ID, please check again",next))
             } else {
                 const updateResult = await Post.findByIdAndUpdate(id,
                     {...data},
