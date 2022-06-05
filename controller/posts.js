@@ -65,7 +65,7 @@ const posts = {
                 (data.hasOwnProperty('content') && data.content === '') ||
                 data.tags.length === 0) 
             {
-                return next(appError(400,err,next))
+                return next(appError(400,"Fail to update",next))
             } else {
                 const updateResult = await Post.findByIdAndUpdate(id,
                     {...data},
