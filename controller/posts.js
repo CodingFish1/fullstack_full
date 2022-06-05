@@ -2,11 +2,12 @@ const successHandler = require('../service/successHandler')
 const errorHandler =require('../service/errorHandler')
 const Post = require('../model/postModel')
 // const User = require("../model/userModel")
+const appError = require("../service/appError");
 
 const opts = { runValidators: true, new: true }
 const posts = {
     async getPosts(req, res) {
-        const timeSort = req.query.timeSort == "asc" ? "createdAt":"-createdAt"
+        const timeSort = req.query.timeSort == "asc" ? "-createdAt":"createdAt"
         const q = req.query.keyword !== undefined ? {content: new RegExp(req.query.keyword)} : {};
         console.log(q)
         const allPosts = await Post.find(q).populate({
@@ -15,8 +16,8 @@ const posts = {
         }).sort(timeSort)
         successHandler(res, allPosts);
     },
-    async createdPosts(req, res) {
-        try {
+    async createdPosts(req, res, next) {
+        // try {
             const { body } = req
             if(body.content) {
                 const newPost = await Post.create({
@@ -30,34 +31,35 @@ const posts = {
                 })
                 successHandler(res, newPost);
             } else {
-                errorHandler(res)
+                return next(appError(400,"You can't leave the 'content' field empty",next))
             }
-        } catch (error) {
-            errorHandler(res,error);
-            }
+        // } catch (error) {
+        //     errorHandler(res,error);
+        //     }
     },
     async delAllPost(req, res) {
+        console.log(req.originalUrl)
         const delPosts = await Post.deleteMany({})
         successHandler(res);
     },
     async delSiglePost(req, res) {
         const id = req.params.id;
         console.log(id)
-        try {
+        // try {
             const deleteResult = await Post.findByIdAndDelete(id);
                 if(deleteResult) {
                     successHandler(res, deleteResult)
                 } else {
                     errorHandler(res, deleteResult)
                 }
-            } catch(error){
-                errorHandler(res, error)
-            }
+            // } catch(error){
+            //     errorHandler(res, error)
+            // }
     },
-    async editPost(req, res) {
+    async editPost(req, res, next) {
         const data = req.body;
         const id = req.params.id;
-        try {
+        // try {
             if (
                 Object.keys(data).length === 0 ||
                 (data.hasOwnProperty('content') && data.content === '') ||
@@ -70,14 +72,15 @@ const posts = {
                     opts
                     )
                 if (updateResult === null) {
-                    errorHandler(res, "No such ID, please check again")
-                    return
+                    // errorHandler(res, { message:"No such ID, please check again"})
+                    return next(appError(400,"No such ID, please check again",next))
+                    // return
                 }
             successHandler(res, updateResult)        
             }
-        }catch(error){
-            errorHandler(res, error)
-        }
+        // }catch(error){
+        //     errorHandler(res, error)
+        // }
     }
 }
 
