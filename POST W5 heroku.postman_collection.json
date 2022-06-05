@@ -1,0 +1,137 @@
+{
+	"info": {
+		"_postman_id": "64b1a49a-ac55-452d-823a-9c00c147dff3",
+		"name": "POST W5 heroku",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET ALL POST",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://enigmatic-mesa-88497.herokuapp.com/posts",
+					"protocol": "https",
+					"host": [
+						"enigmatic-mesa-88497",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ADD NEW POST",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"阿爾敏\",\r\n  \"user\":\"628e1b163ae6ad1fff2ff3a8\",\r\n  \"tags\": \"dd\",\r\n  \"type\": \"group\",\r\n  \"image\": \"image\",\r\n  \"content\": \"各位我有一個計畫\",\r\n  \"likes\": 2,\r\n  \"comments\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://enigmatic-mesa-88497.herokuapp.com/posts",
+					"protocol": "https",
+					"host": [
+						"enigmatic-mesa-88497",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE SINGLE POST",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://enigmatic-mesa-88497.herokuapp.com/posts/6299a476496f9ce169799389",
+					"protocol": "https",
+					"host": [
+						"enigmatic-mesa-88497",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"posts",
+						"6299a476496f9ce169799389"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE ALL POST",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://enigmatic-mesa-88497.herokuapp.com/posts/all",
+					"protocol": "https",
+					"host": [
+						"enigmatic-mesa-88497",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"posts",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EDIT SINGLE POST",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"邊緣小杰\",\r\n  \"user\":\"628e1b163ae6ad1fff2ff3a6\",\r\n  \"tags\": \"er\",\r\n  \"type\": \"group\",\r\n  \"image\": \"https://images.unsplash.com/photo-1504850759690-1c3beb59be7c?ixlib=rb-1.2.1&dl=jonathan-forage-KB9kZgmxGDU-unsplash.jpg&w=640&q=80&fm=jpg&crop=entropy&cs=tinysrgb\",\r\n  \"content\": \"冷...想泡澡!!\",\r\n  \"likes\": 2,\r\n  \"comments\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://enigmatic-mesa-88497.herokuapp.com/posts/628e2ddb1bb5c813ddc7b713",
+					"protocol": "https",
+					"host": [
+						"enigmatic-mesa-88497",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"posts",
+						"628e2ddb1bb5c813ddc7b713"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
