@@ -11,3 +11,5 @@ mongoose
     .connect(DB)
     .then(() => console.log('Connected to the DB'))
     .catch(() => console.log('Error in DB connection'))
+
+// 'mongodb://localhost:27017/testPost6'

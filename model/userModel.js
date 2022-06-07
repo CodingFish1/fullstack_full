@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+
 const userSchema = new mongoose.Schema({
     name: {
       type: String,
@@ -24,6 +25,12 @@ const userSchema = new mongoose.Schema({
       type: Date,
       default: Date.now,
       select: true
+    },
+    password:{
+      type:String,
+      required:[true,"Please input your password"],
+      minlength:8,
+      select:false
     }
   },{ versionKey: false });
 

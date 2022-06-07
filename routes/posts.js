@@ -5,10 +5,12 @@ const PostsControllers = require('../controller/posts.js')
 
 const handleErrAsync = require("../service/handleErrorAsync")
 
+const {isAuth,generateSendJWT} = require('../service/auth');
+
 /* GET home page. */
 router.get('/', handleErrAsync(PostsControllers.getPosts));
 
-router.post('/', handleErrAsync(PostsControllers.createdPosts));
+router.post('/', isAuth,handleErrAsync(PostsControllers.createdPosts));
 
 router.delete('/all',handleErrAsync(PostsControllers.delAllPost));
 
