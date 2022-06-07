@@ -13,12 +13,14 @@ router.post('/signup', handleErrAsync(UserControllers.createdUser));
 
 router.post('/signin', handleErrAsync(UserControllers.signinUser));
 
-router.post('/profile',isAuth, handleErrAsync(UserControllers.userAuth));
+router.post('/profile',isAuth, handleErrAsync(UserControllers.getUserProfile));
+
+router.patch('/profile',isAuth, handleErrAsync(UserControllers.updateUserProfile));
 
 router.patch('/updatepsw',isAuth, handleErrAsync(UserControllers.updatePSW));
 
 // router.delete('/:id',PostsControllers.delSiglePost);
 
-router.patch('/:id',UserControllers.delSigleUser);
+// router.patch('/:id',UserControllers.delSigleUser);
 
 module.exports = router;

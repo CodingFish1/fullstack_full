@@ -18,7 +18,6 @@ const users = {
     async createdUser(req, res, next) {
 
             let {email, password, confirmPassword, name, avatar, gender} = req.body
-            console.log(email,password,confirmPassword,name);
 
             if(!email||!password||!confirmPassword||!name){
                 return next(appError(400,"You can't leave the field empty",next))
@@ -63,11 +62,23 @@ const users = {
         generateSendJWT(user,200,res);
     },
 
-    async userAuth(req, res) {
+    async getUserProfile(req, res) {
         res.status(200).json({
             status:'success',
             user:req.user
         })
+    },
+
+    async updateUserProfile(req, res) {
+        let {email, name, avatar, gender} = req.body
+
+        const user = await User.findByIdAndUpdate(req.user.id,{
+            email,
+            name,
+            avatar,
+            gender
+        })
+        successHandler(res, user);
     },
 
     async updatePSW(req, res, next) {
@@ -85,43 +96,45 @@ const users = {
         generateSendJWT(user,200,res)
     },
 
-    async delSigleUser(req, res) {
-        const id = req.params.id;
-        try {
-            const deleteResult = await Post.findByIdAndDelete(id);
-                if(deleteResult) {
-                    successHandler(res, deleteResult)
-                } else {
-                    errorHandler(res, deleteResult)
-                }
-            } catch(error){
-                errorHandler(res, error)
-            }
-    },
-    async editUser(req, res) {
-        const data = req.body;
-        const id = req.params.id;
-        try {
-            if (
-                Object.keys(data).length === 0 ||
-                data.name === '' || data.email === ''
-            ) {
-                errorHandler(res)
-            } else {
-                const updateResult = await Post.findByIdAndUpdate(id,
-                    {...data},
-                    opts
-                    )
-                if (updateResult === null) {
-                    errorHandler(res, "No such ID, please check again")
-                    return
-                }
-            successHandler(res, updateResult)        
-            }
-        }catch(error){
-            errorHandler(res, error)
-        }
-    }
+
+
+    // async delSigleUser(req, res) {
+    //     const id = req.params.id;
+    //     try {
+    //         const deleteResult = await Post.findByIdAndDelete(id);
+    //             if(deleteResult) {
+    //                 successHandler(res, deleteResult)
+    //             } else {
+    //                 errorHandler(res, deleteResult)
+    //             }
+    //         } catch(error){
+    //             errorHandler(res, error)
+    //         }
+    // },
+    // async editUser(req, res) {
+    //     const data = req.body;
+    //     const id = req.params.id;
+    //     try {
+    //         if (
+    //             Object.keys(data).length === 0 ||
+    //             data.name === '' || data.email === ''
+    //         ) {
+    //             errorHandler(res)
+    //         } else {
+    //             const updateResult = await Post.findByIdAndUpdate(id,
+    //                 {...data},
+    //                 opts
+    //                 )
+    //             if (updateResult === null) {
+    //                 errorHandler(res, "No such ID, please check again")
+    //                 return
+    //             }
+    //         successHandler(res, updateResult)        
+    //         }
+    //     }catch(error){
+    //         errorHandler(res, error)
+    //     }
+    // }
 }
 
 module.exports = users
