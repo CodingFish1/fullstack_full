@@ -4,7 +4,6 @@ const User = require("../model/userModel")
 const appError = require("../service/appError");
 
 const bcrypt = require('bcryptjs')
-const jwt = require('jsonwebtoken')
 const validator = require('validator')
 
 const {isAuth,generateSendJWT} = require('../service/auth');
