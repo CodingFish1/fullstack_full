@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-const {isAuth,generateSendJWT} = require('../service/auth');
+const {isAuth,generateSendJWT} = require('../service/auth.js');
 
 const handleErrAsync = require("../service/handleErrorAsync")
 

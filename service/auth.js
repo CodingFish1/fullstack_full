@@ -42,7 +42,8 @@ const generateSendJWT= (user,statusCode,res)=>{
       status: 'success',
       user:{
         token,
-        name: user.name
+        name: user.name,
+        uid: user.id
       }
     });
   }

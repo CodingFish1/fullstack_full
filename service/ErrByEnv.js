@@ -11,7 +11,7 @@ const Err_Prod = (err, res) => {
       // 非預期錯誤: 送出罐頭預設訊息
       res.status(500).json({
         status: "error",
-        message: err.message,
+        message: "系統錯誤，請恰系統管理員",
       });
     }
   };
