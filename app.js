@@ -8,6 +8,7 @@ const cors = require('cors')
 
 var indexRouter = require('./routes/posts');
 var usersRouter = require('./routes/users');
+var uploadRouter = require('./routes/upload');
 
 // 補捉程式錯誤，捕捉預期外錯誤
 process.on('uncaughtException', err => {
@@ -33,6 +34,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/posts', indexRouter);
 app.use('/users', usersRouter);
+app.use('/upload', uploadRouter)
 // 404 error
 app.use(function(req,res,next){
     res.status(404).json({
