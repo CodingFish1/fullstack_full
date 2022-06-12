@@ -89,7 +89,7 @@ const posts = {
         }
 
         const result = await Post.findOneAndUpdate(
-            { _id: id },
+            { id },
             { $addToSet: { likes: req.user.id } },
             { new: true }
           )
@@ -110,7 +110,7 @@ const posts = {
         }
 
         const result = await Post.findOneAndUpdate(
-            { _id: id },
+            { id },
             { $pull: { likes: req.user.id } },
             { new: true } // Transfer back the modified data
           )
