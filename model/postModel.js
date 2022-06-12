@@ -35,10 +35,12 @@ const postsSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Please fill the Content'],
   },
-  likes: {
-    type: Number,
-    default: 0
-  },
+  likes: [
+    { 
+      type: mongoose.Schema.ObjectId, 
+      ref: 'User' 
+    }
+  ],
   comments:{
     type: Number,
     default: 0

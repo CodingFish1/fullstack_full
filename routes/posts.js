@@ -8,14 +8,16 @@ const handleErrAsync = require("../service/handleErrorAsync")
 const {isAuth,generateSendJWT} = require('../service/auth');
 
 /* GET home page. */
-router.get('/', handleErrAsync(PostsControllers.getPosts));
+router.get('/',isAuth ,handleErrAsync(PostsControllers.getPosts));
 
 router.post('/', isAuth,handleErrAsync(PostsControllers.createdPosts));
 
-router.delete('/all',handleErrAsync(PostsControllers.delAllPost));
+router.delete('/all',isAuth,handleErrAsync(PostsControllers.delAllPost));
 
-router.delete('/:id',handleErrAsync(PostsControllers.delSiglePost));
+router.delete('/:id',isAuth,handleErrAsync(PostsControllers.delSiglePost));
 
-router.patch('/:id',handleErrAsync(PostsControllers.editPost));
+router.post('/:id/likes',isAuth,handleErrAsync(PostsControllers.addLike));
+
+router.delete('/:id/likes',isAuth,handleErrAsync(PostsControllers.removeLike));
 
 module.exports = router;
