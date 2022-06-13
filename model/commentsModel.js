@@ -19,7 +19,10 @@ const commentSchema = new mongoose.Schema(
       type: mongoose.Schema.ObjectId,
       ref: 'post',
       require: ['true', 'comment must belong to a post.']
-    }
+    },
+  },
+  {
+    versionKey: false,
   }
 );
 commentSchema.pre(/^find/, function(next) {
