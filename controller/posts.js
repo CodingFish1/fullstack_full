@@ -150,7 +150,7 @@ const posts = {
     },
     async getCommentsByUser (req, res, next) {
         const user = req.params.id;
-        const result = await Post.findById(id).populate({
+        const result = await Post.findById(user).populate({
             path: 'comments',
             select: 'comment user'
 })
