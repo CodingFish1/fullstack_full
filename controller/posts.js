@@ -150,10 +150,15 @@ const posts = {
     },
     async getCommentsByUser (req, res, next) {
         const user = req.params.id;
-        const result = await Post.findById(user).populate({
-            path: 'comments',
-            select: 'comment user'
-})
+        const result = await Post.find({ user })
+        .populate({
+          path: "user",
+          select: "name avatar",
+        })
+        .populate({
+          path: "comments",
+          select: "comment user createdAt",
+        });
         successHandler(res,result);
     }
 }
