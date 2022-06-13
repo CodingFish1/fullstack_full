@@ -147,6 +147,14 @@ const posts = {
             comment
         });
         successHandler(res,result);
+    },
+    async getCommentsByUser (req, res, next) {
+        const user = req.params.id;
+        const result = await Post.find({user}).populate({
+            path: 'comments',
+            select: 'comment user'
+  });
+        successHandler(res,result);
     }
 }
 

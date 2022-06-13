@@ -10,6 +10,8 @@ const {isAuth,generateSendJWT} = require('../service/auth');
 /* GET home page. */
 router.get('/',isAuth ,handleErrAsync(PostsControllers.getPosts));
 
+router.get('/user/:id',isAuth ,handleErrAsync(PostsControllers.getCommentsByUser));
+
 router.post('/', isAuth,handleErrAsync(PostsControllers.createdPosts));
 
 router.delete('/all',isAuth,handleErrAsync(PostsControllers.delAllPost));
