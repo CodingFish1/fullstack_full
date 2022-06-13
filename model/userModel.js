@@ -31,7 +31,25 @@ const userSchema = new mongoose.Schema({
       required:[true,"Please input your password"],
       minlength:8,
       select:false
-    }
+    },
+    followers: [
+      {
+        user: { type: mongoose.Schema.ObjectId, ref: 'User' },
+        createdAt: {
+          type: Date,
+          default: Date.now
+        }
+      }
+    ],
+    following: [
+      {
+        user: { type: mongoose.Schema.ObjectId, ref: 'User' },
+        createdAt: {
+          type: Date,
+          default: Date.now
+        }
+      }
+    ]
   },{ versionKey: false });
 
 const User = mongoose.model('user', userSchema);

@@ -95,6 +95,30 @@ const users = {
         generateSendJWT(user,200,res)
     },
 
+    async follow(req,res,next) {
+        if (req.params.id === req.user.id) {
+            return next(appError(401,'You can not track youtself',next));
+          }
+        await User.updateOne(
+            {
+                _id: req.user.id,
+                'following.user': { $ne: req.params.id }
+            },
+            {
+                $addToSet: { following: { user: req.params.id } }
+            }
+          );
+        await User.updateOne(
+            {
+                _id: req.params.id,
+                'followers.user': { $ne: req.user.id }
+            },
+            {
+                $addToSet: { followers: { user: req.user.id } }
+            })
+
+            successHandler(res, 'Success');
+}
 
 
     // async delSigleUser(req, res) {
