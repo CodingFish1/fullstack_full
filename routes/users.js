@@ -19,13 +19,13 @@ router.patch('/profile',isAuth, handleErrAsync(UserControllers.updateUserProfile
 
 router.patch('/updatepsw',isAuth, handleErrAsync(UserControllers.updatePSW));
 
-router.patch('/:id/follow',isAuth, handleErrAsync(UserControllers.follow));
+router.post('/:id/follow',isAuth, handleErrAsync(UserControllers.follow));
 
-router.patch('/:id/unfollow',isAuth, handleErrAsync(UserControllers.unfollow));
+router.delete('/:id/unfollow',isAuth, handleErrAsync(UserControllers.unfollow));
 
-router.patch('/:id/getLikeList',isAuth, handleErrAsync(UserControllers.getLikeList));
+router.get('/:id/getLikeList',isAuth, handleErrAsync(UserControllers.getLikeList));
 
-router.patch('/:id/following',isAuth, handleErrAsync(UserControllers.following));
+router.get('/:id/following',isAuth, handleErrAsync(UserControllers.following));
 
 
 // router.delete('/:id',PostsControllers.delSiglePost);
