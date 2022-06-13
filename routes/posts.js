@@ -20,4 +20,6 @@ router.post('/:id/likes',isAuth,handleErrAsync(PostsControllers.addLike));
 
 router.delete('/:id/likes',isAuth,handleErrAsync(PostsControllers.removeLike));
 
+router.post('/:id/comment',isAuth,handleErrAsync(PostsControllers.addComment));
+
 module.exports = router;

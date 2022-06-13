@@ -1,7 +1,8 @@
 const successHandler = require('../service/successHandler')
 const errorHandler =require('../service/errorHandler')
 const Post = require('../model/postModel')
-// const User = require("../model/userModel")
+const Comment = require('../model/commentsModel');
+const User = require("../model/userModel")
 const appError = require("../service/appError");
 
 const opts = { runValidators: true, new: true }
@@ -13,7 +14,11 @@ const posts = {
         const allPosts = await Post.find(q).populate({
             path: 'user', // refer to Schema item
             select: 'name avatar'
-        }).sort(timeSort)
+        }).populate({
+            path: 'comments',
+            select: 'comment user'
+        })
+        .sort(timeSort)
         successHandler(res, allPosts);
     },
     async createdPosts(req, res, next) {
@@ -123,6 +128,26 @@ const posts = {
             user_id: req.user.id,
             post_id: id});
     },
+    async addComment (req, res, next) {
+        const userID = req.user.id
+        const postID = req.params.id
+        const {comment} = req.body
+
+        if(!postID){
+            return next(appError(400,"Add Comment: Please add post ID",next))
+        }
+
+        if(!comment){
+            return next(appError(400, `Add Comment: Please add post commit`, next));
+        }
+
+        const result = await Comment.create({
+            post: postID,
+            user: userID,
+            comment
+        });
+        successHandler(res,result);
+    }
 }
 
 module.exports = posts

@@ -8,7 +8,7 @@ const DB = process.env.DATABASE.replace(
 );
 
 mongoose
-    .connect(DB)
+    .connect('mongodb://localhost:27017/testPost6')
     .then(() => console.log('Connected to the DB'))
     .catch(() => console.log('Error in DB connection'))
 
