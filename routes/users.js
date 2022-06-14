@@ -25,7 +25,7 @@ router.delete('/:id/unfollow',isAuth, handleErrAsync(UserControllers.unfollow));
 
 router.get('/:id/getLikeList',isAuth, handleErrAsync(UserControllers.getLikeList));
 
-router.get('/:id/following',isAuth, handleErrAsync(UserControllers.following));
+router.get('/following',isAuth, handleErrAsync(UserControllers.following));
 
 
 // router.delete('/:id',PostsControllers.delSiglePost);

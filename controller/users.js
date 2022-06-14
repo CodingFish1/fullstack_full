@@ -152,7 +152,7 @@ const users = {
             successHandler(res, 'Unfollow Success');
 },
 
-    async  following(req, res, next) {
+    async following(req, res, next) {
         const userId = req.user.id;
         const result = await User.findById(userId);
         const following = result.following
