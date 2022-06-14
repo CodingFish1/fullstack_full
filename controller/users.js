@@ -158,7 +158,15 @@ const users = {
         const following = result.following
         console.log(following);
         successHandler(res, following);
-  }
+  },
+
+    async getLikeList (req, res, next) {
+        const userId = req.user.id
+        const result = await Post.find({
+            likes: { $in: [userId] },
+        })
+        successHandler(res, following);
+    }
     }
     // async delSigleUser(req, res) {
     //     const id = req.params.id;
