@@ -148,10 +148,17 @@ const users = {
               $pull: { followers: { user: req.user.id } }
             }
           );
-          
-            successHandler(res, 'Unfollow Success');
-}
 
+            successHandler(res, 'Unfollow Success');
+},
+
+    async  following(req, res, next) {
+        const userId = req.user.id;
+        const result = await User.findById(userId);
+        const following = result.following
+        successHandler(res, following);
+  }
+    }
     // async delSigleUser(req, res) {
     //     const id = req.params.id;
     //     try {
