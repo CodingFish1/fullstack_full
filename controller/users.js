@@ -1,6 +1,7 @@
 const successHandler = require('../service/successHandler')
 const errorHandler =require('../service/errorHandler')
 const User = require("../model/userModel")
+const Post = require("../model/postModel")
 const appError = require("../service/appError");
 
 const bcrypt = require('bcryptjs')
@@ -167,7 +168,7 @@ const users = {
         })
         successHandler(res, result);
     }
-    }
+}
     // async delSigleUser(req, res) {
     //     const id = req.params.id;
     //     try {
