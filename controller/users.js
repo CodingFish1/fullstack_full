@@ -117,9 +117,42 @@ const users = {
                 $addToSet: { followers: { user: req.user.id } }
             })
 
-            successHandler(res, 'Success');
-}
+            successHandler(res, 'Follow Success');
+},
 
+    async unfollow(req,res,next) {
+        unfollow = req.params.id
+        if (req.params.id === req.user.id) {
+            return next(appError(401,'You can not track youtself',next));
+        }
+
+        const findUser = await User.findById(unfollow);
+        if (findUser === null) {
+            return next(appError(401,'Target user does not exist',next));
+        }
+
+
+        await User.updateOne(
+            {
+                _id: req.user.id,
+                'following.user': { $ne: req.params.id }
+            },
+            {
+                $addToSet: { following: { user: req.params.id } }
+            }
+        );
+
+        await User.updateOne(
+            {
+                _id: req.params.id,
+                'followers.user': { $ne: req.user.id }
+            },
+            {
+                $addToSet: { followers: { user: req.user.id } }
+            })
+
+            successHandler(res, 'Unfollow Success');
+}
 
     // async delSigleUser(req, res) {
     //     const id = req.params.id;
