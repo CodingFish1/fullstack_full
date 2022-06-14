@@ -163,7 +163,7 @@ const users = {
     async getLikeList (req, res, next) {
         const userId = req.user.id
         const result = await Post.find({
-            likes: { $in: userId },
+            likes: { $in: [userId] },
         })
         successHandler(res, result);
     }
