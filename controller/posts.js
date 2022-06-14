@@ -94,7 +94,7 @@ const posts = {
         }
 
         const result = await Post.findOneAndUpdate(
-            { id },
+            { _id: id },
             { $addToSet: { likes: req.user.id } },
             { new: true }
           )
