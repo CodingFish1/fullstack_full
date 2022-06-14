@@ -15,7 +15,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\":\"小王\",\r\n    \"email\":\"ddd@dfdglfdfdd.com\",\r\n    \"password\":\"12345678\",\r\n    \"confirmPassword\":\"12345678\",\r\n    \"avatar\":\"\",\r\n    \"gender\":\"male\"\r\n}",
+							"raw": "{\r\n    \"name\":\"老王\",\r\n    \"email\":\"9@gmail.com\",\r\n    \"password\":\"123456789\",\r\n    \"confirmPassword\":\"123456789\",\r\n    \"avatar\":\"\",\r\n    \"gender\":\"male\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -45,7 +45,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\":\"ddd@dfdgkglfdfdd.com\",\r\n    \"password\":\"123456789\"\r\n}",
+							"raw": "{\r\n    \"email\":\"5@gmail.com\",\r\n    \"password\":\"123456789\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -69,7 +69,43 @@
 					"response": []
 				},
 				{
-					"name": "User Profile",
+					"name": "Update Password",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWY1MGNhNTQ0MTUyZjBjN2YzMTgxMiIsIm5hbWUiOiLlsI_njosiLCJpYXQiOjE2NTUxNzc5MjUsImV4cCI6MTY1NTc4MjcyNX0.u72MBpJCURDXrkOU6mGsiDOWQg5NbCQEXPveZJF74BQ",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\":\"123456789\",\r\n    \"confirmPassword\":\"123456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://morning-ridge-04088.herokuapp.com/users/updatepsw",
+							"protocol": "https",
+							"host": [
+								"morning-ridge-04088",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"users",
+								"updatepsw"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Profile",
 					"protocolProfileBehavior": {
 						"disabledSystemHeaders": {}
 					},
@@ -108,7 +144,7 @@
 					"response": []
 				},
 				{
-					"name": "User Profile",
+					"name": "Edit Profile",
 					"protocolProfileBehavior": {
 						"disabledSystemHeaders": {}
 					},
@@ -145,48 +181,90 @@
 						}
 					},
 					"response": []
-				},
-				{
-					"name": "Update Password",
-					"request": {
-						"method": "PATCH",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWY0YzFjNTQ0MTUyZjBjN2YzMTdmZiIsIm5hbWUiOiLlsI_njosiLCJpYXQiOjE2NTQ2MDY5NjQsImV4cCI6MTY1NTIxMTc2NH0.4pK_4izExyLCrKmk9KWKuK-99q8B1kk8aKNRosD8x48",
-								"type": "default"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"password\":\"123456780\",\r\n    \"confirmPassword\":\"123456780\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "https://morning-ridge-04088.herokuapp.com/users/updatepsw",
-							"protocol": "https",
-							"host": [
-								"morning-ridge-04088",
-								"herokuapp",
-								"com"
-							],
-							"path": [
-								"users",
-								"updatepsw"
-							]
-						}
-					},
-					"response": []
 				}
 			]
 		},
 		{
 			"name": "Post",
 			"item": [
+				{
+					"name": "Archive",
+					"item": [
+						{
+							"name": "DELETE SINGLE POST",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://morning-ridge-04088.herokuapp.com/posts/629080070516cf5f553ac17b",
+									"protocol": "https",
+									"host": [
+										"morning-ridge-04088",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"posts",
+										"629080070516cf5f553ac17b"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DELETE ALL POST",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://morning-ridge-04088.herokuapp.com/posts/all/",
+									"protocol": "https",
+									"host": [
+										"morning-ridge-04088",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"posts",
+										"all",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "EDIT SINGLE POST",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"波吉\",\r\n  \"user\":\"628e1b163ae6ad1fff2ff3a7\",\r\n  \"tags\": \"dd\",\r\n  \"type\": \"group\",\r\n  \"image\": \"https://images.unsplash.com/photo-1529973565457-a60a2ccf750d?ixlib=rb-1.2.1&dl=sander-dalhuisen-nA6Xhnq2Od8-unsplash.jpg&w=640&q=80&fm=jpg&crop=entropy&cs=tinysrgb\",\r\n  \"content\": \"餓你就吃！\",\r\n  \"likes\": 2,\r\n  \"comments\": 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://morning-ridge-04088.herokuapp.com/posts/629f3cda16df8225e6d73ac7",
+									"protocol": "https",
+									"host": [
+										"morning-ridge-04088",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"posts",
+										"629f3cda16df8225e6d73ac7"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
 				{
 					"name": "GET ALL POST",
 					"protocolProfileBehavior": {
@@ -215,6 +293,40 @@
 							],
 							"path": [
 								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET SINGLE POST",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWY0YzFjNTQ0MTUyZjBjN2YzMTdmZiIsIm5hbWUiOiJBIiwiaWF0IjoxNjU1MDM3MTY0LCJleHAiOjE2NTU2NDE5NjR9.zCfGrMAR5uFLLSDWjUpdYPb5tGzHbUP5FAUhKtBi1YY",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://morning-ridge-04088.herokuapp.com/posts/6299a155496f9ce169799309",
+							"protocol": "https",
+							"host": [
+								"morning-ridge-04088",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"posts",
+								"6299a155496f9ce169799309"
 							]
 						}
 					},
@@ -257,91 +369,18 @@
 					"response": []
 				},
 				{
-					"name": "DELETE SINGLE POST",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "https://morning-ridge-04088.herokuapp.com/posts/629080070516cf5f553ac17b",
-							"protocol": "https",
-							"host": [
-								"morning-ridge-04088",
-								"herokuapp",
-								"com"
-							],
-							"path": [
-								"posts",
-								"629080070516cf5f553ac17b"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "DELETE ALL POST",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "https://morning-ridge-04088.herokuapp.com/posts/all/",
-							"protocol": "https",
-							"host": [
-								"morning-ridge-04088",
-								"herokuapp",
-								"com"
-							],
-							"path": [
-								"posts",
-								"all",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "EDIT SINGLE POST",
-					"request": {
-						"method": "PATCH",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"name\": \"波吉\",\r\n  \"user\":\"628e1b163ae6ad1fff2ff3a7\",\r\n  \"tags\": \"dd\",\r\n  \"type\": \"group\",\r\n  \"image\": \"https://images.unsplash.com/photo-1529973565457-a60a2ccf750d?ixlib=rb-1.2.1&dl=sander-dalhuisen-nA6Xhnq2Od8-unsplash.jpg&w=640&q=80&fm=jpg&crop=entropy&cs=tinysrgb\",\r\n  \"content\": \"餓你就吃！\",\r\n  \"likes\": 2,\r\n  \"comments\": 2\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "https://morning-ridge-04088.herokuapp.com/posts/629f3cda16df8225e6d73ac7",
-							"protocol": "https",
-							"host": [
-								"morning-ridge-04088",
-								"herokuapp",
-								"com"
-							],
-							"path": [
-								"posts",
-								"629f3cda16df8225e6d73ac7"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "Add Like",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWY0YzFjNTQ0MTUyZjBjN2YzMTdmZiIsIm5hbWUiOiJBIiwiaWF0IjoxNjU1MDM5MTU4LCJleHAiOjE2NTU2NDM5NTh9.QAPsOVBvN7qi7bmoorMhMSnpyuFZcDZonjyXAzmdUhw",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWY1MGNhNTQ0MTUyZjBjN2YzMTgxMiIsIm5hbWUiOiLlsI_njosiLCJpYXQiOjE2NTUxNzgwNzksImV4cCI6MTY1NTc4Mjg3OX0.HaRtlvfimlHOtTc2Xb6HA5nyqZ8H9BfCgLU4cqbTPtQ",
 								"type": "default"
 							}
 						],
 						"url": {
-							"raw": "https://morning-ridge-04088.herokuapp.com/posts/628e2ddb1bb5c813ddc7b713/likes",
+							"raw": "https://morning-ridge-04088.herokuapp.com/posts/6299a155496f9ce169799309/likes",
 							"protocol": "https",
 							"host": [
 								"morning-ridge-04088",
@@ -350,7 +389,7 @@
 							],
 							"path": [
 								"posts",
-								"628e2ddb1bb5c813ddc7b713",
+								"6299a155496f9ce169799309",
 								"likes"
 							]
 						}
@@ -380,6 +419,83 @@
 								"posts",
 								"628e2ddb1bb5c813ddc7b713",
 								"likes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ADD NEW COMMENT",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWY0YzFjNTQ0MTUyZjBjN2YzMTdmZiIsIm5hbWUiOiJBIiwiaWF0IjoxNjU1MTI0MDkwLCJleHAiOjE2NTU3Mjg4OTB9.JrcuACX68aQxvOcPFDz62m6xzOWhhXnpS0m99ti76QA",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"comment\": \"aPPLE\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://morning-ridge-04088.herokuapp.com/posts/628e2ddb1bb5c813ddc7b713/comment",
+							"protocol": "https",
+							"host": [
+								"morning-ridge-04088",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"posts",
+								"628e2ddb1bb5c813ddc7b713",
+								"comment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET COMMENTS BY USER",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWVkNWU2MTEzMjIyNjgxZDA5OTgwZCIsIm5hbWUiOiJqZXJyeSIsImlhdCI6MTY1NDU4MjI0NiwiZXhwIjoxNjU1MTg3MDQ2fQ.kIs5tmaxhQSw0S8qak2mMpWTPoCjC_LHgPX3Q_7nvJI",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"波吉\",\r\n  \"user\":\"628e1b163ae6ad1fff2ff3a7\",\r\n  \"tags\": \"dd\",\r\n  \"type\": \"group\",\r\n  \"image\": \"https://images.unsplash.com/photo-1529973565457-a60a2ccf750d?ixlib=rb-1.2.1&dl=sander-dalhuisen-nA6Xhnq2Od8-unsplash.jpg&w=640&q=80&fm=jpg&crop=entropy&cs=tinysrgb\",\r\n  \"content\": \"好餓@_@\",\r\n  \"likes\": 2,\r\n  \"comments\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://morning-ridge-04088.herokuapp.com/posts/user/628e1b163ae6ad1fff2ff3a8",
+							"protocol": "https",
+							"host": [
+								"morning-ridge-04088",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"posts",
+								"user",
+								"628e1b163ae6ad1fff2ff3a8"
 							]
 						}
 					},
@@ -426,6 +542,163 @@
 							],
 							"path": [
 								"upload"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "SNS",
+			"item": [
+				{
+					"name": "Follow",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWY0YzFjNTQ0MTUyZjBjN2YzMTdmZiIsIm5hbWUiOiJBIiwiaWF0IjoxNjU1MTY0NTM1LCJleHAiOjE2NTU3NjkzMzV9.oBkOByRxbaWnNmUCGWt8AHV_RSLYz_u1o-HOALCiKLQ",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://morning-ridge-04088.herokuapp.com/users/628e1b163ae6ad1fff2ff3a7/follow",
+							"protocol": "https",
+							"host": [
+								"morning-ridge-04088",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"users",
+								"628e1b163ae6ad1fff2ff3a7",
+								"follow"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Unfollow",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWY0YzFjNTQ0MTUyZjBjN2YzMTdmZiIsIm5hbWUiOiJBIiwiaWF0IjoxNjU1MTY0NTM1LCJleHAiOjE2NTU3NjkzMzV9.oBkOByRxbaWnNmUCGWt8AHV_RSLYz_u1o-HOALCiKLQ",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://morning-ridge-04088.herokuapp.com/users/628e1b163ae6ad1fff2ff3a8/unfollow",
+							"protocol": "https",
+							"host": [
+								"morning-ridge-04088",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"users",
+								"628e1b163ae6ad1fff2ff3a8",
+								"unfollow"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get following list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWY0YzFjNTQ0MTUyZjBjN2YzMTdmZiIsIm5hbWUiOiJBIiwiaWF0IjoxNjU1MTY0NTM1LCJleHAiOjE2NTU3NjkzMzV9.oBkOByRxbaWnNmUCGWt8AHV_RSLYz_u1o-HOALCiKLQ",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://morning-ridge-04088.herokuapp.com/users/following",
+							"protocol": "https",
+							"host": [
+								"morning-ridge-04088",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"users",
+								"following"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Like List",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWY1MGNhNTQ0MTUyZjBjN2YzMTgxMiIsIm5hbWUiOiLlsI_njosiLCJpYXQiOjE2NTUxNzgwNzksImV4cCI6MTY1NTc4Mjg3OX0.HaRtlvfimlHOtTc2Xb6HA5nyqZ8H9BfCgLU4cqbTPtQ",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://morning-ridge-04088.herokuapp.com/users/getlikelist",
+							"protocol": "https",
+							"host": [
+								"morning-ridge-04088",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"users",
+								"getlikelist"
 							]
 						}
 					},
