@@ -23,7 +23,7 @@ router.post('/:id/follow',isAuth, handleErrAsync(UserControllers.follow));
 
 router.delete('/:id/unfollow',isAuth, handleErrAsync(UserControllers.unfollow));
 
-router.get('/:id/getLikeList',isAuth, handleErrAsync(UserControllers.getLikeList));
+router.get('/getlikelist',isAuth, handleErrAsync(UserControllers.getLikeList));
 
 router.get('/following',isAuth, handleErrAsync(UserControllers.following));
 
