@@ -8,7 +8,9 @@ const handleErrAsync = require("../service/handleErrorAsync")
 const {isAuth,generateSendJWT} = require('../service/auth');
 
 /* GET home page. */
-router.get('/',isAuth ,handleErrAsync(PostsControllers.getPosts));
+router.get('/',isAuth ,handleErrAsync(PostsControllers.getAllPosts));
+
+router.get('/:id',isAuth ,handleErrAsync(PostsControllers.getSinglePost));
 
 router.get('/user/:id',isAuth ,handleErrAsync(PostsControllers.getCommentsByUser));
 

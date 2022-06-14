@@ -7,7 +7,7 @@ const appError = require("../service/appError");
 
 const opts = { runValidators: true, new: true }
 const posts = {
-    async getPosts(req, res) {
+    async getAllPosts(req, res) {
         const timeSort = req.query.timeSort == "asc" ? "-createdAt":"createdAt"
         const q = req.query.keyword !== undefined ? {content: new RegExp(req.query.keyword)} : {};
         console.log(q)
@@ -20,6 +20,20 @@ const posts = {
         })
         .sort(timeSort)
         successHandler(res, allPosts);
+    },
+    async getSinglePost(req, res, next) {
+        const postID = req.params.id;
+        const singlePost = await Post.findById(postID).populate({
+            path: 'user', // refer to Schema item
+            select: 'name avatar'
+        }).populate({
+            path: 'comments',
+            select: 'comment user'
+        })
+        if (singlePost === undefined) {
+            return next(appError(400,"No associated post",next))
+        }
+        successHandler(res, singlePost);
     },
     async createdPosts(req, res, next) {
         // try {
