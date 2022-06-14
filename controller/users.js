@@ -156,6 +156,7 @@ const users = {
         const userId = req.user.id;
         const result = await User.findById(userId);
         const following = result.following
+        console.log(following);
         successHandler(res, following);
   }
     }
@@ -196,6 +197,5 @@ const users = {
     //         errorHandler(res, error)
     //     }
     // }
-}
 
 module.exports = users
