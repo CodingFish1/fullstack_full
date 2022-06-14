@@ -134,23 +134,21 @@ const users = {
 
         await User.updateOne(
             {
-                _id: req.user.id,
-                'following.user': { $ne: req.params.id }
+              _id: req.user.id
             },
             {
-                $addToSet: { following: { user: req.params.id } }
+              $pull: { following: { user: req.params.id } }
             }
-        );
-
-        await User.updateOne(
+          );
+          await User.updateOne(
             {
-                _id: req.params.id,
-                'followers.user': { $ne: req.user.id }
+              _id: req.params.id
             },
             {
-                $addToSet: { followers: { user: req.user.id } }
-            })
-
+              $pull: { followers: { user: req.user.id } }
+            }
+          );
+          
             successHandler(res, 'Unfollow Success');
 }
 
